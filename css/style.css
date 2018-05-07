@@ -1,0 +1,42 @@
+/* colors: #1FAEBE, #083F42, #C4C156, #E5CB8E, #B1DADC */
+* p {
+  color: #083F42; }
+
+header .search-list {
+  list-style-type: none;
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  background-color: #e5f9fa;
+  color: #083F42;
+  border-collapse: collapse;
+  padding: 2%; }
+  header .search-list:last-child {
+    border: 1px solid #e5f9fa;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; }
+  header .search-list .list-item {
+    padding-bottom: 10px; }
+
+main {
+  background-color: #e5f9fa; }
+  main h1 {
+    text-align: center;
+    color: #C4C156;
+    padding: 3%; }
+  main .js-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center; }
+
+header {
+  background-color: #083F42;
+  color: #b1dadc; }
+
+footer {
+  padding-top: 60px; }
+  footer div {
+    background-color: #083F42;
+    color: #b1dadc; }
+
+/*# sourceMappingURL=style.css.map */
