@@ -28,15 +28,17 @@ main {
     display: flex;
     justify-content: center;
     text-align: center; }
+  main .wrapper-top-row {
+    display: flex; }
 
 header {
   background-color: #083F42;
   color: #b1dadc; }
+  header p {
+    margin-bottom: 0px; }
 
-footer {
-  padding-top: 60px; }
-  footer div {
-    background-color: #083F42;
-    color: #b1dadc; }
+footer div {
+  background-color: #083F42;
+  color: #b1dadc; }
 
 /*# sourceMappingURL=style.css.map */

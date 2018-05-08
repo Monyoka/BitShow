@@ -2,7 +2,8 @@ mainModule = (function (UIModule, dataModule) {
     const url = 'http://api.tvmaze.com/shows';
     let seasonsArray = [];
     let showArray = [];
-    
+    let castArray = [];
+
     let tvShows;
 
     function init() {
@@ -53,7 +54,7 @@ mainModule = (function (UIModule, dataModule) {
                 request.fail(function (jqXHR, textStatus) {
                     alert("Request failed: " + textStatus);
                 });
-                UIModule.showSearchList(tvShows) 
+                UIModule.showSearchList(tvShows)
             });
         });
     }
@@ -63,29 +64,77 @@ mainModule = (function (UIModule, dataModule) {
         window.open('show-info-page.html');
     }
 
+    function loadDetails() {
+        let showId = localStorage.getItem('showId');
+        loadSingleShow(showId);
+    }
+
     function loadSingleShow(id) {
         const request = $.ajax({
             url: url + '/' + id,
             method: 'GET'
         });
 
-    request.done(function (response){
-        let show = new dataModule.createSingleShow(
-            response.name,
-            response.image.large,
-            response.id,
-            response.summary
-        );
-        //getCastData(show)
-    });
-    request.fail(function(jqXHR, textStatus) {
-        alert('Request failed: ' + textStatus);
-    });
+        request.done(function (response) {
+            let show = new dataModule.createSingleShow(
+                response.name,
+                response.image.medium,
+                response.id,
+                response.summary
+            );
+            getCastData(show);
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert('Request failed: ' + textStatus);
+        });
     };
+    // data of cast
+    function getCastData(show) {
+        $(document).ready(() => {
+            const request = $.ajax({
+                url: `${url}/${show.id}/cast`,
+                method: 'GET'
+            });
 
-    //ezt tuzetesen atnezni!!!
+            request.done(function (response) {
+                response.forEach(e => {
+                    const actor = dataModule.createCast(e.person.name);
+                    show.addCast(actor);
+                });
+                //ezt azert meg nezd at kerlek
+                getSeasonsData(show);
+            })
+            request.fail(function (jqXHR, textStatus) {
+                alert('Request failed: ' + textStatus);
+            });
+        })
+    }
+
+    function getSeasonsData(show) {
+        $(document).ready(() => {
+            const request = $.ajax({
+                url: `${url}/${show.id}/seasons`,
+                method: 'GET'
+            });
+
+            request.done(function (response){
+                response.forEach(e => {
+                    const seasonDate = dataModule.cerateSeason(e.premiereDate, e.endDate);
+                    show.addSeason(seasonDate);
+                    seasonsArray.push(seasonDate);
+                });
+                UIModule.showSingleShow(show)
+            });
+
+                request.fail(function (jqXHR, textStatus){
+                    alert('Request failed: ' + textStatus);
+                });
+        })
+    }
+
+    //data for show
     function getShowData() {
-        let idShow = localStorage.getItem('id');
+        let idShow = localStorage.getItem('showId');
 
         $(document).ready(() => {
             const request = $.ajax({
@@ -94,32 +143,26 @@ mainModule = (function (UIModule, dataModule) {
             });
 
             request.done(function (response) {
-                console.log(response);
                 const show = dataModule.createSingleShow(
                     response.name,
-                    response.image.medium,
+                    // response.image.medium,
                     response.id,
                     response.summary
                 );
                 showArray.push(show);
-                castArray.forEach(function (e, i){
+                castArray.forEach(function (e, i) {
                     showArray[0].addCast(e.name);
                 });
-                season.forEach(function (e, i){
+                seasonsArray.forEach(function (e, i) {
                     showArray[0].addSeason(e)
                 })
-                console.log(showArray);
             });
-            request.fail(function (jqXHR, textStatus){
+            request.fail(function (jqXHR, textStatus) {
                 alert('Request failed: ' + textStatus);
             })
         })
     }
 
-    function loadDetails() {
-        let showId = localStorage.getItem('showId');
-        loadSingleShow(showId);
-    }
 
 
     return {
@@ -129,7 +172,9 @@ mainModule = (function (UIModule, dataModule) {
         openDetails,
         loadSingleShow,
         loadDetails,
-        getShowData
+        getShowData,
+        getCastData,
+        getSeasonsData
     }
 
 })(UIModule, dataModule)

@@ -38,7 +38,7 @@ const UIModule = (function(){
     function showSingleShow(show) {
         let castString = '';
         let seasonString = '';
-        show.season.forEach(function (e, i){
+        show.seasons.forEach(function (e, i){
             seasonString += '<li>' + e.premiereDate + ' - ' + e.endDate + '</li>'
         });
         show.cast.forEach(function (e, i){
@@ -50,22 +50,25 @@ const UIModule = (function(){
             <h1>${show.name}</h1>
             <div class="wrapper-top-row">
                 <img src="${show.img}" alt="${show.name}" class="main-img col-6">
+                <div class="seasons-and-cast">
                     <div class="seasons">
-                        <h4 class="title"> Seasons (${show.season.length})</h4>
+                        <h4 class="title"> Seasons (${show.seasons.length})</h4>
                             <ul>
                             ${seasonString}
                             </ul>
                     </div>
-                    <h4 class="title">Cast</h4>
-                        <ul>
-                            ${castString}
-                        </ul>
+                    <div class="cast">
+                        <h4 class="title">Cast</h4>
+                            <ul>
+                                ${castString}
+                            </ul>
                     </div>
+                </div>
             </div>
         </div>
         <div class="wrapper=bottom">
             <h4>Show details</h4>
-            <p>${show.details}</p>
+            <p class="js-info-data">${show.details}</p>
         </div>
         `)
         wrappShowInfo.append(ShowInfoData);

@@ -47,14 +47,20 @@
         justify-content: center;
         text-align: center;
     }
+    .wrapper-top-row {
+        display: flex;
+    }
 }
     header {
         background-color: $headerAndFooterBGC;
         color: $headerAndFooterFC;
+        p {
+            margin-bottom: 0px; 
+        }
     }
 
     footer {
-        padding-top: 60px;
+        // padding-top: 60px;
         div {
             background-color: $headerAndFooterBGC;
             color: $headerAndFooterFC;
