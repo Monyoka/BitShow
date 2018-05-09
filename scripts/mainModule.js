@@ -119,6 +119,10 @@ mainModule = (function (UIModule, dataModule) {
 
             request.done(function (response){
                 response.forEach(e => {
+                    if (e.endDate === null && e.premiereDate === null) {
+                        e.premiereDate = 'in'/*(new Date).getFullYear()*/
+                        e.endDate = 'progress';
+                    } 
                     const seasonDate = dataModule.cerateSeason(e.premiereDate, e.endDate);
                     show.addSeason(seasonDate);
                     seasonsArray.push(seasonDate);

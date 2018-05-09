@@ -19,7 +19,8 @@ header .search-list {
     padding-bottom: 10px; }
 
 main {
-  background-color: #e5f9fa; }
+  background-color: #e5f9fa;
+  color: #083F42; }
   main h1 {
     text-align: center;
     color: #C4C156;
@@ -29,13 +30,21 @@ main {
     justify-content: center;
     text-align: center; }
   main .wrapper-top-row {
-    display: flex; }
+    display: flex;
+    justify-content: space-around; }
+  main .main-img {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 4%; }
+  main p {
+    margin-bottom: 0px;
+    text-align: justify; }
+    main p:last-child {
+      padding-bottom: 2%; }
 
 header {
   background-color: #083F42;
   color: #b1dadc; }
-  header p {
-    margin-bottom: 0px; }
 
 footer div {
   background-color: #083F42;
