@@ -66,9 +66,9 @@ const UIModule = (function(){
                 </div>
             </div>
         </div>
-        <div class="wrapper=bottom">
+        <div class="wrapper-bottom">
             <h4>Show details</h4>
-            <p class="js-info-data">${show.details}</p>
+            <div class="js-info-data"><p>${show.details}</p></div>
         </div>
         `)
         wrappShowInfo.append(ShowInfoData);

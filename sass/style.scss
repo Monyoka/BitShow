@@ -5,6 +5,7 @@
     $titleColor: #C4C156;
     $textColor: #083F42;
     $backgroundColor: rgb(229, 249, 250);
+    $h4Color: rgb(175, 172, 88);
     * {
         // background-image: url("https://edge.alluremedia.com.au/m/l/2013/03/TVMovies.jpg");
         // background-repeat: no-repeat;
@@ -59,12 +60,16 @@
             height: 100%;
             padding-bottom: 4%;
         }
-        p {
+        .js-info-data {
             margin-bottom: 0px;
             text-align: justify;
+            padding: 0 2%;
             &:last-child {
-                padding-bottom: 2%;
+                padding-bottom: 3%;
             }
+        }
+        .title {
+            color: $h4Color;
         }
     }
 
