@@ -1,23 +1,27 @@
     /* colors: #1FAEBE, #083F42, #C4C156, #E5CB8E, #B1DADC */
 
     $headerAndFooterBGC: #083F42;
-    $headerAndFooterFC: #b1dadc;
     $titleColor: #C4C156;
     $textColor: #083F42;
-    $backgroundColor: rgb(229, 249, 250);
+    $backgroundColor: rgb(212, 249, 250);
     $h4Color: rgb(175, 172, 88);
     * {
-        // background-image: url("https://edge.alluremedia.com.au/m/l/2013/03/TVMovies.jpg");
-        // background-repeat: no-repeat;
-        // background-attachment: fixed;
-        // background-size: auto;
-        // z-index: -1;
         p {
             color: $textColor;
         }
     }
 
     header {
+        background-color: $headerAndFooterBGC;
+        .navbar-brand {
+            color: $h4Color !important;
+        }
+        .js-search-bar {
+            border-color: $h4Color;
+            &::-webkit-input-placeholder {
+                color: $textColor;
+            }
+        }
         .search-list {
             list-style-type: none;
             position: absolute;
@@ -34,6 +38,7 @@
             }
             .list-item {
                 padding-bottom: 10px;
+                cursor: pointer;
             }
         }
     }
@@ -45,6 +50,12 @@
             text-align: center;
             color: $titleColor;
             padding: 3%;
+        }
+        .js-img {
+            cursor: pointer;
+        }
+        .box-title {
+            cursor: pointer;
         }
         .js-wrapper {
             display: flex;
@@ -73,15 +84,10 @@
         }
     }
 
-    header {
-        background-color: $headerAndFooterBGC;
-        color: $headerAndFooterFC;
-    }
-
     footer {
         // padding-top: 60px;
         div {
             background-color: $headerAndFooterBGC;
-            color: $headerAndFooterFC;
+            color: $h4Color;
         }
     }

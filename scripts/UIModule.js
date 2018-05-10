@@ -1,17 +1,27 @@
-const UIModule = (function(){
+const UIModule = (function () {
 
     const wrapperDiv = $('.js-wrapper');
     const searchInput = $('.js-search-bar');
     const searchUnorderedList = $('.search-list');
-    const wrappShowInfo = $('.append-js')
+    const wrappShowInfo = $('.append-js');
+    const wrappBrand = $('.navbar-brand');
 
-//this will displayed 51 shows in main page
+    //this will displayed 51 shows in main page
     function ShowShows(tvshow) {
-        for (let i = 0; i<tvshow.limit; i++) {
-            const div = $(`<div data-id-show="${tvshow.shows[i].id}" class="box col-4 wrapp-all-main" onclick="mainModule.openDetails(${tvshow.shows[i].id})"><img src="${tvshow.shows[i].img}" /><p class="box-title">${tvshow.shows[i].name}</p></div>`);
+        for (let i = 0; i < tvshow.limit; i++) {
+            const div = $(`<div data-id-show="${tvshow.shows[i].id}" class="box col-4 wrapp-all-main" onclick="mainModule.openDetails(${tvshow.shows[i].id})"><img class="js-img" src="${tvshow.shows[i].img}" /><p class="box-title">${tvshow.shows[i].name}</p></div>`);
             wrapperDiv.append(div);
+
         }
+
+
     }
+
+    function reload(loadShow) {
+        const linkForLogo = $(`<div onclick="mainModule.loadshows()">BitShow</dvi>`);
+        wrappBrand.append(linkForLogo);
+    }
+
     function showSearchList(data) {
         let searchList;
         let searchInputValue = searchInput.val();
@@ -21,7 +31,7 @@ const UIModule = (function(){
 
         data.forEach(function (e, i) {
 
-            if(e.name.toLowerCase().includes(filter) && searchUnorderedList.find("li").length < 10) {
+            if (e.name.toLowerCase().includes(filter) && searchUnorderedList.find("li").length < 10) {
                 //kell ide egyaltalan a toLowerCase?
                 searchList = searchUnorderedList.append($(`<li class="list-item" onclick="mainModule.openDetails(${data[i].id})">${e.name}</li>`));
             }
@@ -31,17 +41,17 @@ const UIModule = (function(){
         }
 
         return searchList;
-            
+
 
     }
 
     function showSingleShow(show) {
         let castString = '';
         let seasonString = '';
-        show.seasons.forEach(function (e, i){
+        show.seasons.forEach(function (e, i) {
             seasonString += '<li>' + e.premiereDate + ' - ' + e.endDate + '</li>'
         });
-        show.cast.forEach(function (e, i){
+        show.cast.forEach(function (e, i) {
             castString += '<li>' + e.name + '</li>'
         });
 
@@ -67,7 +77,7 @@ const UIModule = (function(){
             </div>
         </div>
         <div class="wrapper-bottom">
-            <h4>Show details</h4>
+            <h4 class="title">Show details</h4>
             <div class="js-info-data"><p>${show.details}</p></div>
         </div>
         `)
@@ -79,6 +89,7 @@ const UIModule = (function(){
     return {
         ShowShows,
         showSearchList,
-        showSingleShow
+        showSingleShow,
+        reload
     }
 })();

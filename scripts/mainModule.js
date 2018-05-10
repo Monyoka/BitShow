@@ -31,7 +31,7 @@ mainModule = (function (UIModule, dataModule) {
                 shows.push(singleShow);
             });
             tvShows = dataModule.createAllTVShow(shows, 51);
-            UIModule.ShowShows(tvShows)
+            UIModule.ShowShows(tvShows);
         });
         request.fail(function (jqXHR, textStatus) {
             alert("Request failed: " + textStatus);

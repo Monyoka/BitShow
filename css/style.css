@@ -2,29 +2,42 @@
 * p {
   color: #083F42; }
 
-header .search-list {
-  list-style-type: none;
-  position: absolute;
-  top: 100%;
-  z-index: 1;
-  background-color: #e5f9fa;
-  color: #083F42;
-  border-collapse: collapse;
-  padding: 2%; }
-  header .search-list:last-child {
-    border: 1px solid #e5f9fa;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; }
-  header .search-list .list-item {
-    padding-bottom: 10px; }
+header {
+  background-color: #083F42; }
+  header .navbar-brand {
+    color: #afac58 !important; }
+  header .js-search-bar {
+    border-color: #afac58; }
+    header .js-search-bar::-webkit-input-placeholder {
+      color: #083F42; }
+  header .search-list {
+    list-style-type: none;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    background-color: #d4f9fa;
+    color: #083F42;
+    border-collapse: collapse;
+    padding: 2%; }
+    header .search-list:last-child {
+      border: 1px solid #d4f9fa;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px; }
+    header .search-list .list-item {
+      padding-bottom: 10px;
+      cursor: pointer; }
 
 main {
-  background-color: #e5f9fa;
+  background-color: #d4f9fa;
   color: #083F42; }
   main h1 {
     text-align: center;
     color: #C4C156;
     padding: 3%; }
+  main .js-img {
+    cursor: pointer; }
+  main .box-title {
+    cursor: pointer; }
   main .js-wrapper {
     display: flex;
     justify-content: center;
@@ -45,12 +58,8 @@ main {
   main .title {
     color: #afac58; }
 
-header {
-  background-color: #083F42;
-  color: #b1dadc; }
-
 footer div {
   background-color: #083F42;
-  color: #b1dadc; }
+  color: #afac58; }
 
 /*# sourceMappingURL=style.css.map */
